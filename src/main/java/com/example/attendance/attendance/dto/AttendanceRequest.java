@@ -5,9 +5,8 @@ import java.util.Map;
 
 public class AttendanceRequest {
     private List<Integer> studentIds;
-    private Map<String, String> attendanceData; // maps attendance_{studentId} to "present" or "absent"
+    private Map<String, String> attendanceData; 
 
-    // Getters and Setters
     public List<Integer> getStudentIds() {
         return studentIds;
     }
