@@ -24,21 +24,19 @@ public class AttendanceController {
     @Autowired
     private StudentRepository studentRepository;
 
-    // Get attendance form for a specific subject (returns JSON)
     @GetMapping("/{subjectId}")
     public ResponseEntity<List<Student>> getAttendanceForm(@PathVariable Long subjectId) {
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid subject ID"));
         List<Student> students = studentRepository.findBySubjects(subject);
 
-        return ResponseEntity.ok(students);  // Return list of students
+        return ResponseEntity.ok(students);  
     }
 
-    // Submit attendance for a specific subject (via POST)
     @PostMapping("/{subjectId}")
     public ResponseEntity<String> submitAttendance(
             @PathVariable Long subjectId,
-            @RequestBody AttendanceRequest attendanceRequest) {  // Use @RequestBody here
+            @RequestBody AttendanceRequest attendanceRequest) { 
 
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid subject ID"));
